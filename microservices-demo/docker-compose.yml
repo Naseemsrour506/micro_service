@@ -1,0 +1,27 @@
+services:
+  python-service:
+    build:
+      context: ./python-service
+    image: python-service:local
+    ports:
+      - "5001:5001"
+
+  dotnet-service:
+    build:
+      context: ./dotnet-service
+    image: dotnet-service:local
+    ports:
+      - "5002:5002"
+
+  node-service:
+    build:
+      context: ./node-service
+    image: node-service:local
+    ports:
+      - "5000:5000"
+    environment:
+      PYTHON_SERVICE_URL: http://python-service:5001
+      DOTNET_SERVICE_URL: http://dotnet-service:5002
+    depends_on:
+      - python-service
+      - dotnet-service

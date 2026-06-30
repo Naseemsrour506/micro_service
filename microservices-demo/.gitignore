@@ -1,0 +1,6 @@
+﻿python-service/.venv/
+node-service/node_modules/
+**/bin/
+**/obj/
+.vscode/
+.DS_Store
